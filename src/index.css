@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: consolas;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('D:\4th Semester\WP\Projects\pokie2_o\2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.4; /* Reduce the visibility of the background image */
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay to enhance contrast */
+    z-index: -1;
+}
+
+.tic-tac-toe {
+    position: relative;
+    width: fit-content;
+    margin: 40px auto;
+    text-align: center;
+    z-index: 1;
+}
+
+.tic-tac-toe h1  {
+    color: #fff309; /* Make the heading more visible */
+    font-size: 2.5em; /* Adjust font size for large screen */
+}
+
+.tic-tac-toe h3  {
+    color: #ff9400; /* Make the heading more visible */
+}
+
+
+.tic-tac-toe button {
+    padding: 15px 20px; /* Larger padding for larger screen */
+    margin: 35px;
+    background: transparent;
+    border: 3px solid #fff; /* Thicker button border */
+    color: #fff; /* Make the button text more visible */
+    width: 150px; /* Increase button width */
+    border-radius: 5px;
+    transition: 0.2s;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2em; /* Increase button font size */
+}
+
+.tic-tac-toe button:hover {
+    background: #fff;
+    color: #222;
+}
+
+.tic-tac-toe .game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Increase gap between grid squares */
+    z-index: 1;
+}
+
+.turn {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: fit-content;
+    position: relative;
+    border-radius: 10px;
+}
+
+.turn .square,
+.winner .square {
+    width: 100px; /* Larger grid squares */
+    height: 100px; /* Larger grid squares */
+    pointer-events: none;
+    border: 3px solid #fff; /* Thicker grid lines */
+}
+
+.turn .square span.x::before,
+.turn .square span.x::after {
+    background: #fff; /* Darken the X */
+    transition: 0.2s;
+}
+
+.turn .square span.o {
+    transition: 0.2s;
+    border-color: #fff; /* Darken the O */
+}
+
+.turn::after {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 100%;
+    top: 0;
+    background: #ff0000;
+    border-radius: 9px;
+    z-index: -1;
+    transition: 0.2s;
+}
+
+.turn.left::after {
+    left: 0;
+}
+
+.turn.left span.o {
+    border-color: #fff;
+}
+
+.turn.right span.x::before,
+.turn.right span.x::after {
+    background: #fff;
+}
+
+.turn.right::after {
+    left: 50%;
+}
+
+.winner {
+    position: fixed; /* Change from absolute to fixed to center on the screen regardless of scrolling */
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: rgba(0, 0, 0, 0.7); /* Darken the overlay */
+    z-index: 1;
+}
+
+.winner .text {
+    background: #111;
+    width: 70%;
+    max-width: 500px;
+    height: 350px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.winner .text h2 {
+    font-size: 3em;
+    margin: 15px 0;
+    color: #fff;
+}
+
+.winner .win {
+    margin: 0 auto;
+    width: fit-content;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+}
